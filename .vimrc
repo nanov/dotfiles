@@ -36,6 +36,8 @@ Plug 'metakirby5/codi.vim'
 
 Plug 'OmniSharp/omnisharp-vim'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Mappings, code-actions available flag and statusline integration
 Plug 'nickspoons/vim-sharpenup'
 
@@ -44,6 +46,10 @@ Plug 'dense-analysis/ale'
 
 Plug 'idanarye/vim-merginal'
 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Autocompletion
 Plug 'prabirshrestha/asyncomplete.vim'
 call plug#end()
@@ -98,7 +104,7 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 " Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
+" autocmd VimEnter * NERDTree | wincmd p
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
@@ -146,3 +152,17 @@ augroup OmniSharpIntegrations
   autocmd!
 augroup END
 " }}}
+
+" go stuff
+" disable all linters as that is taken care of by coc.nvim
+let g:go_diagnostics_enabled = 0
+let g:go_metalinter_enabled = []
+
+" don't jump to errors after metalinter is invoked
+let g:go_jump_to_error = 0
+
+" run go imports on file save
+let g:go_fmt_command = "goimports"
+
+" automatically highlight variable your cursor is on
+let g:go_auto_sameids = 0

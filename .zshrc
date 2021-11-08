@@ -82,6 +82,11 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# exa
+eval `gdircolors ~/.dir_colors`
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -106,3 +111,17 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # source /Users/mitkonanov/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# general use
+alias ls='exa'                                                          # ls
+alias l='exa -lbaF --git'                                                # list, size, type, git
+alias ll='exa -lbGF --git'                                             # long list
+alias llm='exa -lbGd --git --sort=modified'                            # long list, modified date sort
+alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
+alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
+
+# specialty views
+alias lS='exa -1'                                                              # one column, just names
+alias lt='exa --tree --level=2'                                         # tree
+
+
+export PATH="/usr/local/sbin:$PATH"
