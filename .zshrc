@@ -1,9 +1,9 @@
-zmodload zsh/zprof
+export COLORTERM=truecolor
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/mitkonanov/.oh-my-zsh"
+export ZSH="/Users/d.nanov/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -24,14 +24,23 @@ ZSH_THEME="ecollect-magic"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Fix ls bug on osx
+# https://github.com/ohmyzsh/ohmyzsh/issues/11647
+export LS_COLORS="di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+alias ls='ls -G'
+DISABLE_LS_COLORS="true"
+
+
+# Nvm Plugiin lazy update
+zstyle ':omz:plugins:nvm' lazy yes
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -46,8 +55,9 @@ ZSH_THEME="ecollect-magic"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -71,21 +81,20 @@ ZSH_THEME="ecollect-magic"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
+if ! [[ "$TERM_PROGRAM" = WarpTerminal ]]; then
+ plugins=(
+       git
+       nvm
+       zsh-autosuggestions
+       zsh-syntax-highlighting
+       fzf
   )
+fi
 
-DISABLE_MAGIC_FUNCTIONS=true
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# exa
-eval `gdircolors ~/.dir_colors`
-zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
-
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -110,18 +119,34 @@ zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# source /Users/mitkonanov/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# general use
-alias ls='exa'                                                          # ls
-alias l='exa -lbaF --git'                                                # list, size, type, git
-alias ll='exa -lbGF --git'                                             # long list
-alias llm='exa -lbGd --git --sort=modified'                            # long list, modified date sort
-alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
-alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
+#
+# xplr 
+alias xcd='cd "$(xplr --print-pwd-as-result)"' # cd on exit
+alias lvim='~/.local/bin/lvim'
 
-# specialty views
-alias lS='exa -1'                                                              # one column, just names
-alias lt='exa --tree --level=2'                                         # tree
+#
+#
+#
+# disable terminal freeze when clicking Ctrl-s
+stty -ixon
 
+export LC_ALL=en_US.UTF-8
 
-export PATH="/usr/local/sbin:$PATH"
+# use non-black color for `null` values for the jq command
+export JQ_COLORS="1;35:0;39:0;39:0;39:0;32:1;39:1;39"
+
+export NVM_DIR="$HOME/.nvm"
+export PATH="$HOME/.dotnet/tools:$PATH"
+
+# alias nvim="CC=/usr/local/bin/gcc-12 nvim"
+
+eval "$(zoxide init zsh)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+export JAVA_HOME=`/usr/libexec/java_home -v 11`
+
+# eval "$(starship init zsh)"
+
+# virtualenv
+ # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
