@@ -1,5 +1,4 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator
-
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty it self.
@@ -16,6 +15,7 @@ env:
 # Window dimensions in character columns and lines
 # (changes require restart)
 window:
+  option_as_alt: OnlyLeft
   dimensions:
     columns: 110
     lines: 33
@@ -32,7 +32,7 @@ window:
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: true
 
-background_opacity: 1
+# background_opacity: 1
 
 # The FreeType rasterizer needs to know the device DPI for best results
 # (changes require restart)
@@ -47,19 +47,19 @@ draw_bold_text_with_bright_colors: true
 font:
   # Normal (roman) font face
   normal:
-    family: JetBrains Mono
+    family: JetBrainsMono Nerd Font
     # The `style` can be specified to pick a specific face.
     style: Regular
 
   # Bold font face
   bold:
-    family: JetBrains Mono
+    family: JetBrainsMono Nerd Font  
     # The `style` can be specified to pick a specific face.
     style: Bold
 
   # Italic font face
   italic:
-    family: JetBrains Mono
+    family: JetBrainsMono Nerd Font
     # The `style` can be specified to pick a specific face.
     style: Italic
 
@@ -83,7 +83,7 @@ font:
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
   # it is recommended to set `use_thin_strokes` to `false`.
-  use_thin_strokes: true
+  # use_thin_strokes: true
 
 # Should display the render timer
 debug.render_timer: false
@@ -107,9 +107,9 @@ colors:
     matches:
       foreground: CellBackground
       background: "#88c0d0"
-    bar:
-      background: "#434c5e"
-      foreground: "#d8dee9"
+  footer_bar:
+    background: "#434c5e"
+    foreground: "#d8dee9"
   normal:
     black: "#3b4252"
     red: "#bf616a"
@@ -249,6 +249,12 @@ key_bindings:
   - { key: Insert, chars: "\x1b[2~" }
   - { key: Delete, chars: "\x1b[3~" }
 
+  # osx meta+hjkl
+  - { key: H,         mods: Alt,       chars: "\x1bh"                       }
+  - { key: J,         mods: Alt,       chars: "\x1bj"                       }
+  - { key: K,         mods: Alt,       chars: "\x1bk"                       }
+  - { key: L,         mods: Alt,       chars: "\x1bl"                       }
+
   # shortcuts for tmux. the leader key is control-b (0x02)
   - { key: D, mods: Command, chars: "\x06\x76" }
   - { key: D, mods: Command|Shift, chars: "\x06\x73" }
@@ -311,6 +317,6 @@ selection:
 shell:
   program: /bin/zsh
   args:
-    - -l
-    - -c
-    - "tmux"
+   - -l
+   - -c
+   - "tmux"

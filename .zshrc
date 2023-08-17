@@ -1,9 +1,10 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export COLORTERM=truecolor
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/d.nanov/.oh-my-zsh"
+export ZSH="/Users/dnanov/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -135,16 +136,21 @@ export LC_ALL=en_US.UTF-8
 # use non-black color for `null` values for the jq command
 export JQ_COLORS="1;35:0;39:0;39:0;39:0;32:1;39:1;39"
 
+export GOPATH=$HOME/go
+export GOROOT=/opt/homebrew/opt/go/libexec
+
 export NVM_DIR="$HOME/.nvm"
-export PATH="$HOME/.dotnet/tools:$PATH"
+export DOTNET_ROOT="/usr/local/share/dotnet"
+export PATH="$GOPATH/bin:$GOROOT/bin:$DOTNET_ROOT:$HOME/.cargo/bin:/Users/dnanov/Library/Python/3.9/bin:/usr/local/bin:$HOME/.dotnet/tools:$PATH"
 
 # alias nvim="CC=/usr/local/bin/gcc-12 nvim"
+export PATH=$PATH:~/Downloads/zig  
 
 eval "$(zoxide init zsh)"
 # export PYENV_ROOT="$HOME/.pyenv"
 # command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init -)"
-export JAVA_HOME=`/usr/libexec/java_home -v 11`
+# export JAVA_HOME=`/usr/libexec/java_home -v 11`
 
 # eval "$(starship init zsh)"
 
