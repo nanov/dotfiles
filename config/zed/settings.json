@@ -1,0 +1,77 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+	"hard_tabs": true,
+	"tab_size": 2,
+	"vim_mode": true,
+	"relative_line_numbers": true,
+	"icon_theme": "Zed (Default)",
+	"ui_font_size": 16,
+	"buffer_font_size": 15,
+	"theme": {
+		"mode": "dark",
+		"light": "One Light",
+		"dark": "Tokyo Night"
+	},
+	"edit_predictions": {
+		"disabled_globs": [
+			"**/.git",
+			"**/.svn",
+			"**/.hg",
+			"**/CVS",
+			"**/.DS_Store",
+			"**/Thumbs.db",
+			"**/.classpath",
+			"**/.settings",
+			"**/.vscode",
+			"**/.idea",
+			"**/node_modules",
+			"**/.serverless",
+			"**/build",
+			"**/dist",
+			"**/coverage",
+			"**/.venv",
+			"**/__pycache__",
+			"**/.ropeproject",
+			"**/.pytest_cache",
+			"**/.ruff_cache"
+		],
+		"mode": "eager",
+		"copilot": {
+			"proxy": null,
+			"proxy_no_verify": null
+		}
+	},
+	"file_scan_exclusions": [
+		"**/.git",
+		"**/.svn",
+		"**/.hg",
+		"**/CVS",
+		"**/.DS_Store",
+		"**/Thumbs.db",
+		"**/.classpath",
+		"**/.settings",
+		"**/.vscode",
+		"**/.idea",
+		"**/node_modules",
+		"**/.serverless",
+		"**/dist",
+		"**/coverage",
+		"**/.venv",
+		"**/__pycache__",
+		"**/.ropeproject",
+		"**/.pytest_cache",
+		"**/.ruff_cache"
+	],
+	"command_aliases": {
+		"W": "w",
+		"Wq": "wq",
+		"Q": "q"
+	}
+}

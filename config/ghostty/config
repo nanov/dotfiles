@@ -1,0 +1,102 @@
+# Ghostty Configuration
+# Converted from Alacritty config with Nord theme
+
+# Font Configuration
+font-family = "JetBrainsMono Nerd Font"
+font-size = 12
+font-thicken = true
+
+# Window Configuration
+window-padding-x = 2
+window-padding-y = 2
+window-width = 110
+window-height = 33
+window-decoration = true
+
+# Shell Configuration
+command = /bin/zsh -l
+
+theme = Nord
+# # Theme and Colors (Nord)
+# background = 2e3440
+# foreground = d8dee9
+#
+# # Cursor
+# cursor-color = d8dee9
+# cursor-text = 2e3440
+#
+# # Selection
+# selection-background = 4c566a
+# selection-foreground = d8dee9
+#
+# # Normal Colors
+# palette = 0=#3b4252
+# palette = 1=#bf616a
+# palette = 2=#a3be8c
+# palette = 3=#ebcb8b
+# palette = 4=#81a1c1
+# palette = 5=#b48ead
+# palette = 6=#88c0d0
+# palette = 7=#e5e9f0
+#
+# # Bright Colors
+# palette = 8=#4c566a
+# palette = 9=#bf616a
+# palette = 10=#a3be8c
+# palette = 11=#ebcb8b
+# palette = 12=#81a1c1
+# palette = 13=#b48ead
+# palette = 14=#8fbcbb
+# palette = 15=#eceff4
+
+# Window and Tab Configuration
+window-theme = auto
+window-save-state = always
+gtk-tabs-location = bottom
+macos-titlebar-style = transparent
+
+# Keybindings
+# Basic clipboard operations
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard
+
+# Window management
+keybind = cmd+n=new_window
+keybind = cmd+q=quit
+
+# Native Ghostty tab management
+keybind = cmd+t=new_tab
+keybind = cmd+w=close_surface
+keybind = cmd+shift+right_bracket=next_tab
+keybind = cmd+shift+left_bracket=previous_tab
+
+# Tab selection
+keybind = cmd+one=goto_tab:1
+keybind = cmd+two=goto_tab:2
+keybind = cmd+three=goto_tab:3
+keybind = cmd+four=goto_tab:4
+keybind = cmd+five=goto_tab:5
+keybind = cmd+six=goto_tab:6
+keybind = cmd+seven=goto_tab:7
+keybind = cmd+eight=goto_tab:8
+keybind = cmd+nine=goto_tab:9
+
+# Native Ghostty split management
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+keybind = cmd+shift+enter=toggle_split_zoom
+
+# Split navigation
+keybind = cmd+h=goto_split:left
+keybind = cmd+j=goto_split:bottom
+keybind = cmd+k=goto_split:top
+keybind = cmd+l=goto_split:right
+
+# Alternative split navigation with arrows
+keybind = cmd+left=goto_split:left
+keybind = cmd+down=goto_split:bottom
+keybind = cmd+up=goto_split:top
+keybind = cmd+right=goto_split:right
+
+# macOS specific
+macos-option-as-alt = left
